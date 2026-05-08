@@ -2,4 +2,4 @@
 
 number = 98
 
-print(f"{number} Battery Street")
+print(f"{int(number)} Battery Street")
