@@ -3,7 +3,7 @@
 def add_tuple(tuple_a=(), tuple_b=()):
     # checking for NULL value in a then in B
     if not tuple_a and not tuple_b:
-        empty_tuple: tuple = ()
+        empty_tuple: tuple = (0, 0)
         return (empty_tuple)
     # checking for minimum lenght of each tuple
     a_clean: tuple = (tuple_a + (0, 0))[:2]
