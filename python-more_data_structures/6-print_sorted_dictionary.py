@@ -6,4 +6,4 @@ def print_sorted_dictionary(a_dictionary):
     a_dictionary = sorted(a_dictionary.items())
     sort_dir = dict(a_dictionary)
     for i, j in sort_dir.items():
-        print(f"{i} : {j}")
+        print(f"{i}: {j}")
