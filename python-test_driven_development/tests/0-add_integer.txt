@@ -1,0 +1,50 @@
+====================================
+Fichier de test pour 0-add_integer
+====================================
+
+Pour commencer, nous devons importer la fonction dynamiquement :
+>>> add_integer = __import__('0-add_integer').add_integer
+
+------------------------------------
+1. Cas nominaux (Nombres standards)
+------------------------------------
+
+Test 1 : Addition simple de deux entiers positifs :
+>>> add_integer(1, 2)
+3
+
+Test 2 : Addition avec des nombres négatifs :
+>>> add_integer(-5, -10)
+-15
+
+Test 3 : Addition avec l'élément neutre (zéro) :
+>>> add_integer(0, 42)
+42
+
+Test 4 : Addition de très grands entiers :
+>>> add_integer(1000000, 2000000)
+3000000
+
+------------------------------------
+2. Gestion des erreurs de type (Exceptions)
+------------------------------------
+
+Test 5 : Le premier paramètre 'a' est une chaîne de caractères :
+>>> add_integer("hello", 2)
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+Test 6 : Le deuxième paramètre 'b' est une chaîne de caractères :
+>>> add_integer(2, "world")
+Traceback (most recent call last):
+TypeError: b must be an integer
+
+Test 7 : Le paramètre 'a' est une liste (type complexe invalide) :
+>>> add_integer([1, 2], 3)
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+Test 8 : Le paramètre 'b' vaut None :
+>>> add_integer(5, None)
+Traceback (most recent call last):
+TypeError: b must be an integer
