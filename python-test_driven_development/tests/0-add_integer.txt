@@ -48,3 +48,42 @@ Test 8 : Le paramètre 'b' vaut None :
 >>> add_integer(5, None)
 Traceback (most recent call last):
 TypeError: b must be an integer
+
+------------------------------------
+3. Transtypage (Integer casting)
+------------------------------------
+
+Test 9 : Vérification du cast des nombres à virgule (tronqués, pas arrondis) :
+>>> add_integer(2.9, 3.1)
+5
+
+Test 10 : Cast de nombres à virgule négatifs :
+>>> add_integer(-2.6, -3.2)
+-5
+
+------------------------------------
+4. Paramètres manquants (Arguments)
+------------------------------------
+
+Test 11 : Un seul argument fourni (b prend sa valeur par défaut, généralement 98) :
+>>> add_integer(5)
+103
+
+Test 12 : Aucun argument fourni (provoque une erreur native de Python) :
+>>> add_integer()
+Traceback (most recent call last):
+TypeError: add_integer() missing 1 required positional argument: 'a'
+
+------------------------------------
+5. Cas extrêmes des Float (Infinity & NaN)
+------------------------------------
+
+Test 13 : Float overflow (impossible de convertir l'infini en entier) :
+>>> add_integer(float('inf'), 2)
+Traceback (most recent call last):
+OverflowError: cannot convert float infinity to integer
+
+Test 14 : Float NaN (impossible de convertir 'Not a Number' en entier) :
+>>> add_integer(float('nan'), 2)
+Traceback (most recent call last):
+ValueError: cannot convert float NaN to integer
