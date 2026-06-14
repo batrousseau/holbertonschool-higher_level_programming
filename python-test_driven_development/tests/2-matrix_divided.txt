@@ -1,0 +1,55 @@
+======================================
+Tests pour la fonction matrix_divided
+======================================
+
+Importation dynamique de la fonction depuis le fichier Python :
+>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+--------------------------------------
+1. Cas nominaux (Comportement attendu)
+--------------------------------------
+
+Test 1 : Division d'une matrice d'entiers par un entier :
+>>> matrix = [[1, 2, 3], [4, 5, 6]]
+>>> matrix_divided(matrix, 2)
+[[0.5, 1.0, 1.5], [2.0, 2.5, 3.0]]
+
+Test 2 : Division contenant des nombres à virgule (floats) avec arrondi strict à 2 décimales :
+>>> matrix_2 = [[1.5, 2.5], [3.8, 4.2]]
+>>> matrix_divided(matrix_2, 1.5)
+[[1.0, 1.67], [2.53, 2.8]]
+
+Test 3 : Isolation mémoire (Vérification que la fonction renvoie bien une NOUVELLE matrice sans modifier l'originale) :
+>>> original_matrix = [[1, 2], [3, 4]]
+>>> new_matrix = matrix_divided(original_matrix, 2)
+>>> original_matrix
+[[1, 2], [3, 4]]
+
+--------------------------------------
+2. Gestion des exceptions (Erreurs)
+--------------------------------------
+
+Test 4 : Le paramètre matrix n'est pas une liste de listes (liste à une seule dimension) :
+>>> matrix_divided([1, 2, 3], 2)
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Test 5 : Un élément interne de la matrice n'est ni un entier ni un float (présence d'une string) :
+>>> matrix_divided([[1, 2], [3, "bad_type"]], 2)
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Test 6 : Erreur de dimension (les lignes de la matrice n'ont pas toutes la même taille) :
+>>> matrix_divided([[1, 2, 3], [4, 5]], 2)
+Traceback (most recent call last):
+IndexError: Each row of the matrix must have the same size
+
+Test 7 : Le diviseur 'div' n'est pas un nombre valide (type incorrect) :
+>>> matrix_divided([[1, 2], [3, 4]], "string_div")
+Traceback (most recent call last):
+TypeError: div must be a number
+
+Test 8 : Le diviseur 'div' est structurellement égal à zéro :
+>>> matrix_divided([[1, 2], [3, 4]], 0)
+Traceback (most recent call last):
+ZeroDivisionError: division by zero
