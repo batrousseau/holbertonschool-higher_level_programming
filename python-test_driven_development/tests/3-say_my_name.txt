@@ -54,3 +54,12 @@ My name is Heisen berg Jr.
 Test 8 : Chaînes contenant des caractères Unicode / Émojis.
 >>> say_my_name("😎", "👑")
 My name is 😎 👑
+
+------------------------------------
+4. Arguments manquants
+------------------------------------
+
+Test 9 : Appel de la fonction sans aucun argument (les deux sont manquants) :
+>>> say_my_name()
+Traceback (most recent call last):
+TypeError: say_my_name() missing 1 required positional argument: 'first_name'
