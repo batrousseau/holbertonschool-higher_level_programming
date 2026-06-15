@@ -1,0 +1,56 @@
+====================================
+Fichier de test piégeux pour say_my_name
+====================================
+
+Importation dynamique de la fonction depuis le bon module :
+>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+------------------------------------
+1. Le piège absolu des espaces invisibles (Doctest Quirks)
+------------------------------------
+
+Test 1 : Le nom de famille est omis (valeur par défaut ""). 
+La fonction doit afficher "My name is Walter ". Note bien l'espace obligatoire juste après Walter !
+>>> say_my_name("Walter")
+My name is Walter 
+
+Test 2 : Les deux arguments sont des chaînes vides.
+L'affichage génère "My name is  " (avec exactement deux espaces consécutifs après le "is").
+>>> say_my_name("", "")
+My name is  
+
+------------------------------------
+2. Le piège des faux-amis du type String
+------------------------------------
+
+Test 3 : Passage de la valeur None. Beaucoup de codes l'oublient et concatènent "None".
+>>> say_my_name(None, "White")
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+Test 4 : Le piège du Booléen. En Python, True et False appartiennent à la famille des entiers. Tu dois explicitement vérifier leur type.
+>>> say_my_name("Walter", True)
+Traceback (most recent call last):
+TypeError: last_name must be a string
+
+Test 5 : Passage d'un nombre sous forme d'entier pur.
+>>> say_my_name(123, "White")
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+------------------------------------
+3. Structures complexes et cas extrêmes
+------------------------------------
+
+Test 6 : Passage d'une liste (type complexe).
+>>> say_my_name(["Walter"], "White")
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+Test 7 : Prénom et nom contenant déjà des espaces internes et des caractères spéciaux.
+>>> say_my_name("Heisen berg", "Jr.")
+My name is Heisen berg Jr.
+
+Test 8 : Chaînes contenant des caractères Unicode / Émojis.
+>>> say_my_name("😎", "👑")
+My name is 😎 👑
