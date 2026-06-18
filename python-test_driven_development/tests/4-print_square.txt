@@ -1,0 +1,113 @@
+====================================
+Fichier de test avancé pour print_square
+====================================
+
+Importation dynamique de la fonction depuis le module 4-print_square :
+>>> print_square = __import__('4-print_square').print_square
+
+------------------------------------
+1. Cas nominaux (Comportement attendu)
+------------------------------------
+
+Test 1 : Affichage d'un carré standard de taille 4 :
+>>> print_square(4)
+####
+####
+####
+####
+
+Test 2 : Affichage d'un carré de taille 1 (le plus petit carré visible) :
+>>> print_square(1)
+#
+
+Test 3 : Affichage d'un carré de taille 0 (ne doit rien afficher du tout, pas même une ligne vide) :
+>>> print_square(0)
+
+Test 15 : Un carré plus grand (10x10) pour valider la répétition des boucles :
+>>> print_square(10)
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+
+------------------------------------
+2. Gestion des erreurs de valeur (Entiers négatifs)
+------------------------------------
+
+Test 4 : La taille est un entier négatif :
+>>> print_square(-1)
+Traceback (most recent call last):
+ValueError: size must be >= 0
+
+Test 5 : La taille est un grand entier négatif :
+>>> print_square(-100)
+Traceback (most recent call last):
+ValueError: size must be >= 0
+
+------------------------------------
+3. Gestion des erreurs de type (Types invalides classiques)
+------------------------------------
+
+Test 6 : La taille est une chaîne de caractères :
+>>> print_square("4")
+Traceback (most recent call last):
+TypeError: size must be an integer
+
+Test 7 : La taille est un float positif (ex: 5.5) :
+>>> print_square(5.5)
+Traceback (most recent call last):
+TypeError: size must be an integer
+
+Test 8 : La taille est une liste :
+>>> print_square([3])
+Traceback (most recent call last):
+TypeError: size must be an integer
+
+Test 9 : La taille est le booléen True (True vaut 1 en Python, mais ce n'est pas un entier pur) :
+>>> print_square(True)
+Traceback (most recent call last):
+TypeError: size must be an integer
+
+------------------------------------
+4. Le piège de l'énoncé (Float inférieur à 0)
+------------------------------------
+
+Test 10 : La taille est un float ET est inférieure à 0. 
+L'énoncé exige explicitement une TypeError ici, et NON une ValueError !
+>>> print_square(-1.5)
+Traceback (most recent call last):
+TypeError: size must be an integer
+
+------------------------------------
+5. Cas critiques, impromptus et vices de Python
+------------------------------------
+
+Test 11 : Le cas de False. 
+Comme pour True, False vaut logiquement 0 en Python (isinstance(False, int) est vrai). Si ton code ne vérifie pas strictement le type booléen, False passera incognito comme un carré de taille 0 au lieu de lever une erreur !
+>>> print_square(False)
+Traceback (most recent call last):
+TypeError: size must be an integer
+
+Test 12 : Le cas du float 0.0. 
+Il vaut zéro, il n'est pas inférieur à zéro, mais c'est un float. Il doit lever une TypeError.
+>>> print_square(0.0)
+Traceback (most recent call last):
+TypeError: size must be an integer
+
+Test 13 : L'infini numérique (float('inf')).
+C'est techniquement un float, mais sa valeur dépasse l'entendement. Il doit être bloqué par la vérification de type.
+>>> print_square(float('inf'))
+Traceback (most recent call last):
+TypeError: size must be an integer
+
+Test 14 : Les nombres complexes (ex: 3 + 4j).
+C'est un type numérique natif de Python (`complex`), mais ce n'est pas un entier.
+>>> print_square(3 + 4j)
+Traceback (most recent call last):
+TypeError: size must be an integer
