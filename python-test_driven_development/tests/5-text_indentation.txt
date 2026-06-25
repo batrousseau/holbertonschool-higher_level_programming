@@ -1,0 +1,83 @@
+====================================
+Fichier de test pour text_indentation
+====================================
+
+Importation dynamique de la fonction depuis le module 5-text_indentation :
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+------------------------------------
+1. Cas nominaux (Comportement attendu)
+------------------------------------
+
+Test 1 : Un texte simple avec les trois caractères de ponctuation cibles.
+Chaque bloc doit être suivi de deux retours à la ligne (matérialisés par <BLANKLINE>).
+>>> text_indentation("Hello. World? Python: Rules.")
+Hello.
+<BLANKLINE>
+World?
+<BLANKLINE>
+Python:
+<BLANKLINE>
+Rules.
+<BLANKLINE>
+
+Test 2 : Gestion stricte des espaces (Pas d'espace au début ni à la fin des lignes).
+Les espaces superflus après les ponctuations et au début/fin globale doivent être nettoyés.
+>>> text_indentation("   Lorem ipsum.    Dolor sit?   Amet:   ")
+Lorem ipsum.
+<BLANKLINE>
+Dolor sit?
+<BLANKLINE>
+Amet:
+<BLANKLINE>
+
+Test 3 : Chaîne de caractères vide (Ne doit absolument rien afficher).
+>>> text_indentation("")
+
+------------------------------------
+2. Cas particuliers et limites
+------------------------------------
+
+Test 4 : Une chaîne de caractères sans aucune ponctuation cible.
+>>> text_indentation("Un texte tout simple sans rien")
+Un texte tout simple sans rien
+
+Test 5 : Ponctuations consécutives (Chaque caractère déclenche son propre double saut).
+>>> text_indentation("Ah? Oh.")
+Ah?
+<BLANKLINE>
+Oh.
+<BLANKLINE>
+
+------------------------------------
+3. Gestion des erreurs de type (TypeError)
+------------------------------------
+
+Test 6 : L'argument text est un entier au lieu d'une string.
+>>> text_indentation(42)
+Traceback (most recent call last):
+TypeError: text must be a string
+
+Test 7 : L'argument text est la valeur None.
+>>> text_indentation(None)
+Traceback (most recent call last):
+TypeError: text must be a string
+
+Test 8 : L'argument text est une liste.
+>>> text_indentation(["un", "deux"])
+Traceback (most recent call last):
+TypeError: text must be a string
+
+Test 9 : L'argument text est un booléen (True).
+>>> text_indentation(True)
+Traceback (most recent call last):
+TypeError: text must be a string
+
+------------------------------------
+4. Argument manquant
+------------------------------------
+
+Test 10 : Appel de la fonction sans aucun argument (l'argument text est obligatoire).
+>>> text_indentation()
+Traceback (most recent call last):
+TypeError: text_indentation() missing 1 required positional argument: 'text'
