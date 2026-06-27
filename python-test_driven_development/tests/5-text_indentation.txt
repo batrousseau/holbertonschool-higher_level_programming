@@ -81,3 +81,19 @@ Test 10 : Appel de la fonction sans aucun argument (l'argument text est obligato
 >>> text_indentation()
 Traceback (most recent call last):
 TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+Test 11: Pas d'espace après la ponctuation et pas de ponctuation finale
+>>> text_indentation("Holberton.School")
+Holberton.
+<BLANKLINE>
+School
+
+Test 12: Enchaînement de plusieurs ponctuations sans aucun espace
+>>> text_indentation("Holberton.School:Python?Cool")
+Holberton.
+<BLANKLINE>
+School:
+<BLANKLINE>
+Python?
+<BLANKLINE>
+Cool

@@ -33,5 +33,6 @@ def text_indentation(text):
                 print(new_string, end="")
                 print("\n")
                 start_index = index + 1
-    if start_index == 0:
-        print(text, end="")
+    if start_index != len(text):
+        last_string: str = text[start_index:].strip()
+        print(last_string, end="")
