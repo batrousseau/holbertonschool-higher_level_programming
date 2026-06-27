@@ -29,6 +29,26 @@ class MaxIntegerTestCase(unittest.TestCase):
         result = 12000
         self.assertTrue(max_integer(classic_list), result)
 
+    def test_max_at_beginning(self):
+        """Test avec la valeur maximale au tout début de la liste"""
+        liste = [10, 5, 8, 3]
+        self.assertEqual(max_integer(liste), 10)
+
+    def test_max_at_end(self):
+        """Test avec la valeur maximale à la toute fin de la liste"""
+        liste = [3, 5, 8, 10]
+        self.assertEqual(max_integer(liste), 10)
+
+    def test_max_in_middle(self):
+        """Test avec la valeur maximale située au milieu de la liste"""
+        liste = [3, 5, 10, 8, 2]
+        self.assertEqual(max_integer(liste), 10)
+
+    def test_one_element(self):
+        """Test avec une liste qui ne contient qu'un seul entier"""
+        liste = [7]
+        self.assertEqual(max_integer(liste), 7)
+
 
 if __name__ == "__main__":
     unittest.main()
