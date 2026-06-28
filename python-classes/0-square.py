@@ -9,10 +9,5 @@ for basic geometric manipulations.
 class Square:
     """Represents a square geometric shape."""
 
-    def __init__(self, side: int):
-        """Initialize a new instance of the Square class.
-
-        Args:
-            side (int, float): The length of a side of the square.
-        """
-        self.side: int = side
+    def __init__(self):
+        """Initialize a new instance of the Square class."""
