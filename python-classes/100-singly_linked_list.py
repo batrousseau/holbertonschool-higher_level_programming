@@ -72,6 +72,8 @@ class SinglyLinkedList():
         Defines the string representation of the list.
         Returns all elements as a string, each separated by a newline character
         """
+        if self.__head == None:
+            return
         node_temp = self.__head
         to_print: str = ""
         while node_temp.next_node is not None:
