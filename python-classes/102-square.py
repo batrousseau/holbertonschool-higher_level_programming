@@ -59,6 +59,8 @@ class Square:
         """
         if self.__size == other.__size:
             return True
+        else:
+            return False
 
     def __ne__(self, other):
         """
@@ -69,6 +71,8 @@ class Square:
         """
         if self.__size != other.__size:
             return True
+        else:
+            return False
 
     def __lt__(self, other):
         """
@@ -80,6 +84,8 @@ class Square:
         """
         if self.__size < other.__size:
             return True
+        else:
+            return False
 
     def __le__(self, other):
         """
@@ -92,6 +98,8 @@ class Square:
         """
         if self.__size <= other.__size:
             return True
+        else:
+            return False
 
     def __gt__(self, other):
         """
@@ -105,7 +113,11 @@ class Square:
         """
         if self.__size > other.__size:
             return True
+        else:
+            return False
 
     def __ge__(self, other):
         if self.__size >= other.__size:
             return True
+        else:
+            return False
