@@ -65,6 +65,7 @@ class Square:
     """Print the object square"""
     def __str__(self):
         to_print: str = ""
+        count: int = 0
         if self.__size == 0:
             return f"{to_print}"
         for pos1 in range(self.__position[1]):
@@ -74,5 +75,7 @@ class Square:
                 to_print = to_print + " "
             for height in range(self.__size):
                 to_print = to_print + "#"
-            to_print = to_print + "\n"
+            if count < self.__size - 1:
+                to_print = to_print + "\n"
+                count = count + 1
         return f"{to_print}"
