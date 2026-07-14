@@ -1,0 +1,150 @@
+#!/usr/bin/python3
+"""Rectangle class definition.
+
+This Python script defines a simple rectangle class with basic properties and
+methods for geometric calculations.
+"""
+
+
+class Rectangle:
+    """A basic representation of a rectangle in a 2D plane."""
+
+    number_of_instances: int = 0
+    print_symbol = "#"
+
+    def __init__(self, width=0, height=0):
+        self.__width = width
+        self.__height = height
+        Rectangle.number_of_instances = Rectangle.number_of_instances + 1
+        self.print_symbol = Rectangle.print_symbol
+
+    def __del__(self):
+        """Destructor method called when a Rectangle instance is destroyed.
+
+        Prints a farewell message to the standard output.
+        """
+        Rectangle.number_of_instances = Rectangle.number_of_instances - 1
+        print("Bye rectangle...")
+
+    def __str__(self):
+        """Returns a string representation of the rectangle.
+
+        :return: A string representing the rectangle.
+        If the height or width is 0, returns an empty string.
+        """
+        if self.__height == 0 or self.__width == 0:
+            return ""
+        to_print: str = ""
+        count: int = 0
+        for lenght in range(self.__height):
+            for width in range(self.__width):
+                to_print = to_print + f"{self.print_symbol}"
+            count = count + 1
+            if count < self.__height:
+                to_print = to_print + "\n"
+        return to_print
+
+    def __repr__(self):
+        """Returns a string representation of the rectangle.
+
+        The output should be in Python's `__init__` format.
+
+        :return: A string representing the class initialization.
+        """
+        repr: str = ""
+        repr = repr + f"Rectangle({self.__width}, {self.__height})"
+        return repr
+
+    @property
+    def width(self):
+        return self.__width
+
+    @width.setter
+    def width(self, value):
+        if type(value) is not int:
+            raise TypeError("width must be an integer")
+        if value < 0:
+            raise ValueError("width must be >= 0")
+        self.__width = value
+
+    @property
+    def height(self):
+        return self.__height
+
+    @height.setter
+    def height(self, value):
+        if type(value) is not int:
+            raise TypeError("height must be an integer")
+        if value < 0:
+            raise ValueError("height must be >= 0")
+        self.__height = value
+
+    def area(self):
+        """Calculate and return the area of the rectangle.
+
+        :return: The area of the rectangle.
+        """
+        return self.__height * self.__width
+
+    def perimeter(self):
+        """Calculate and return the perimeter of the rectangle.
+
+        :return: The perimeter of the rectangle.
+        """
+        if self.__height == 0 or self.__width == 0:
+            return 0
+        return (self.__height * 2) + (self.__width * 2)
+
+    def bigger_or_equal(rect_1, rect_2):
+        """Compares two rectangles based on their area.
+
+        Args:
+            rect_1 (Rectangle): The first rectangle to compare.
+            rect_2 (Rectangle): The second rectangle to compare.
+
+        Raises:
+            TypeError: If rect_1 is not an instance of Rectangle.
+            TypeError: If rect_2 is not an instance of Rectangle.
+
+        Returns:
+            Rectangle: rect_1 if its area is greater than or equal to rect_2's,
+            otherwise rect_2.
+        """
+        if not isinstance(rect_1, Rectangle):
+            raise TypeError("rect_1 must be an instance of Rectangle")
+        if not isinstance(rect_2, Rectangle):
+            raise TypeError("rect_2 must be an instance of Rectangle")
+
+        area1: int = rect_1.area()
+        area2: int = rect_2.area()
+
+        if area1 == area2:
+            return rect_1
+        if area1 > area2:
+            return rect_1
+        if area2 > area1:
+            return rect_2
+
+    @classmethod
+    def square(cls, size=0):
+        """
+        This classmethod creates a new Rectangle instance with
+        the specified width and height.
+
+        Args:
+            size (int): The size of both sides of the rectangle. Defaults to 0.
+
+        Raises:
+            TypeError: If `size` is not an integer.
+            ValueError: If `size` is less than 0.
+
+        Returns:
+            Rectangle: A new instance of Rectangle
+            with the specified width and height.
+        """
+        if type(size) is not int:
+            raise TypeError("size must be an integer")
+        if size < 0:
+            raise ValueError("size must be > 0")
+        new_square = Rectangle(size, size)
+        return (new_square)
