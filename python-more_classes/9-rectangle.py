@@ -142,9 +142,5 @@ class Rectangle:
             Rectangle: A new instance of Rectangle
             with the specified width and height.
         """
-        if type(size) is not int:
-            raise TypeError("size must be an integer")
-        if size < 0:
-            raise ValueError("size must be > 0")
         new_square = Rectangle(size, size)
         return (new_square)
