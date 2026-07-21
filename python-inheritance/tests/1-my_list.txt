@@ -1,0 +1,42 @@
+==============================
+Tests for MyList.print_sorted
+==============================
+
+Importing the class:
+    >>> MyList = __import__('1-my_list').MyList
+
+Checking inheritance:
+    >>> issubclass(MyList, list)
+    True
+
+Testing instantiation with a standard list:
+    >>> my_list = MyList()
+    >>> my_list.append(1)
+    >>> my_list.append(4)
+    >>> my_list.append(2)
+    >>> my_list.append(3)
+    >>> print(my_list)
+    [1, 4, 2, 3]
+
+Printing the list sorted:
+    >>> my_list.print_sorted()
+    [1, 2, 3, 4]
+
+Checking that the original list is unchanged:
+    >>> print(my_list)
+    [1, 4, 2, 3]
+
+Testing with negative numbers and zero:
+    >>> my_list = MyList([3, -1, -5, 2, 0])
+    >>> my_list.print_sorted()
+    [-5, -1, 0, 2, 3]
+
+Testing with duplicate numbers:
+    >>> my_list = MyList([2, 1, 2, 1])
+    >>> my_list.print_sorted()
+    [1, 1, 2, 2]
+
+Testing with an empty list:
+    >>> my_list = MyList()
+    >>> my_list.print_sorted()
+    []
