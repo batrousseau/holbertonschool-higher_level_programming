@@ -2,9 +2,8 @@
 
 
 """Module providing a list subclass with sorting capabilities.
-
-This module defines the MyList class, which inherits
-from the built-in list type.
+This module defines the MyList class, which inherits from
+the built-in list type.
 It adds functionality to print the contents of the list in sorted order without
 modifying the original instance.
 """
