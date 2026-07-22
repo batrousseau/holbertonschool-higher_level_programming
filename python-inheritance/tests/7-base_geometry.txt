@@ -1,0 +1,85 @@
+======================================
+Tests doctest pour la classe BaseGeometry
+======================================
+
+Importation du module et de la classe :
+=======================================
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+1. Instanciation et vérification du type
+----------------------------------------
+>>> bg = BaseGeometry()
+>>> isinstance(bg, BaseGeometry)
+True
+
+2. Test de la méthode area()
+----------------------------
+>>> bg.area()
+Traceback (most recent call last):
+    ...
+Exception: area() is not implemented
+
+3. Test de integer_validator() avec des valeurs valides
+--------------------------------------------------------
+>>> bg.integer_validator("my_int", 12)
+>>> bg.integer_validator("width", 89)
+>>> bg.integer_validator("height", 1)
+
+4. Test de integer_validator() avec un type invalide (TypeError)
+-----------------------------------------------------------------
+Chaîne de caractères :
+>>> bg.integer_validator("name", "John")
+Traceback (most recent call last):
+    ...
+TypeError: name must be an integer
+
+Nombre flottant :
+>>> bg.integer_validator("age", 13.5)
+Traceback (most recent call last):
+    ...
+TypeError: age must be an integer
+
+Booléen :
+>>> bg.integer_validator("is_active", True)
+Traceback (most recent call last):
+    ...
+TypeError: is_active must be an integer
+
+Liste :
+>>> bg.integer_validator("items", [1, 2, 3])
+Traceback (most recent call last):
+    ...
+TypeError: items must be an integer
+
+Dictionnaire :
+>>> bg.integer_validator("data", {"a": 1})
+Traceback (most recent call last):
+    ...
+TypeError: data must be an integer
+
+Tuple :
+>>> bg.integer_validator("coords", (1, 2))
+Traceback (most recent call last):
+    ...
+TypeError: coords must be an integer
+
+Valeur None :
+>>> bg.integer_validator("empty", None)
+Traceback (most recent call last):
+    ...
+TypeError: empty must be an integer
+
+5. Test de integer_validator() avec une valeur <= 0 (ValueError)
+------------------------------------------------------------------
+Valeur égale à 0 :
+>>> bg.integer_validator("distance", 0)
+Traceback (most recent call last):
+    ...
+ValueError: distance must be greater than 0
+
+Valeur négative :
+>>> bg.integer_validator("temperature", -5)
+Traceback (most recent call last):
+    ...
+ValueError: temperature must be greater than 0
+
