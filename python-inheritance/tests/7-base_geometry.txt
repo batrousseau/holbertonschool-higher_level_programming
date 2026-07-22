@@ -25,8 +25,8 @@ Exception: area() is not implemented
 >>> bg.integer_validator("width", 89)
 >>> bg.integer_validator("height", 1)
 
-4. Test de integer_validator() avec un type invalide (TypeError)
------------------------------------------------------------------
+4. Test de integer_validator() avec des types invalides (TypeError)
+--------------------------------------------------------------------
 Chaîne de caractères :
 >>> bg.integer_validator("name", "John")
 Traceback (most recent call last):
@@ -50,6 +50,12 @@ Liste :
 Traceback (most recent call last):
     ...
 TypeError: items must be an integer
+
+Ensemble (Set) :
+>>> bg.integer_validator("age", {3, 4})
+Traceback (most recent call last):
+    ...
+TypeError: age must be an integer
 
 Dictionnaire :
 >>> bg.integer_validator("data", {"a": 1})
@@ -83,3 +89,16 @@ Traceback (most recent call last):
     ...
 ValueError: temperature must be greater than 0
 
+6. Test de integer_validator() avec des arguments manquants
+-----------------------------------------------------------
+Aucun argument :
+>>> bg.integer_validator()  # doctest: +ELLIPSIS
+Traceback (most recent call last):
+    ...
+TypeError: ...
+
+Un seul argument ("age") :
+>>> bg.integer_validator("age")  # doctest: +ELLIPSIS
+Traceback (most recent call last):
+    ...
+TypeError: ...

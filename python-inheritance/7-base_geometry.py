@@ -44,31 +44,9 @@ class BaseGeometry:
         """
         self.name = name
         self.value = value
-
-    @property
-    def value(self):
-        """Retrieve the stored private value from this instance."""
-        return self.__value
-
-    @value.setter
-    def value(self, value):
-        """Set the internal value after performing strict validation.
-
-        This setter ensures that 'value' is an integer and strictly > zero.
-        If these conditions are not met, raises a TypeError or ValueError with
-        a descriptive message including attribute name. The validated value is
-        then stored in the private __attribute variable.
-
-        Args:
-            value (int): An integer expected to be greater than zero.
-
-        Raises:
-            TypeError: If 'value' is not an instance of int.
-            ValueError: If 'value' is less than or equal to 0.
-        """
         if type(value) is not int:
             raise TypeError(f"{self.name} must be an integer")
         if value <= 0:
             raise ValueError(f"{self.name} must be greater than 0")
-        self.__value = value
-        return self.__value
+
+
