@@ -6,6 +6,7 @@
 This module imports the BaseGeometry base class & defines
 the Rectangle subclass, which adds width and height attributes
 with validation inherited from the parent."""
+
 BaseGeometry = __import__("7-base_geometry").BaseGeometry
 
 
