@@ -15,6 +15,8 @@ def add_attribute(obj, name, value):
     It raises TypeError if the object type (str, int, tuple) forbids
     it or if the attribute already exists."""
 
+    if obj not in globals():
+        raise TypeError("can't add new attribute")
     if hasattr(obj, name):
         raise TypeError("can't add new attribute")
     if type(obj) is str or type(obj) is int or type(obj) is tuple:
