@@ -19,4 +19,4 @@ def add_attribute(obj, name, value):
         raise TypeError("can't add new attribute")
     if type(obj) is str or type(obj) is int or type(obj) is tuple:
         raise TypeError("can't add new attribute")
-    obj.name = value
+    setattr(obj, name, value)
