@@ -120,4 +120,4 @@ def shape_info(obj):
     if not isinstance(obj, Shape):
         raise TypeError("Only accept arguments which inherits from Shape")
     print(f"Area: {obj.area()}")
-    print(f"Perimeter :{obj.perimeter()}")
+    print(f"Perimeter: {obj.perimeter()}")
