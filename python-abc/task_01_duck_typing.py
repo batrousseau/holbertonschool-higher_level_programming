@@ -40,8 +40,8 @@ class Circle(Shape):
         self.radius = radius
         if type(radius) is not int and type(radius) is not float:
             raise TypeError("Radius must be an int or a float")
-        #if radius < 0:
-            #raise ValueError("Radius must be > 0")
+        if radius < 0:
+            raise ValueError("Radius must be > 0")
 
     def area(self):
         """Calculate and print the circle's area
@@ -54,7 +54,7 @@ class Circle(Shape):
         """Calculate and print the
         circle's circumference (perimeter)."""
 
-        self.perimeter_computed = 2 * math.pi * self.radius
+        self.perimeter_computed = 2 * math.pi * abs(self.radius)
         return (self.perimeter_computed)
 
 
