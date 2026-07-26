@@ -40,20 +40,22 @@ class Circle(Shape):
         self.radius = radius
         if type(radius) is not int and type(radius) is not float:
             raise TypeError("Radius must be an int or a float")
+        if radius < 0:
+            raise ValueError("Radius must be > 0")
 
     def area(self):
         """Calculate and print the circle's area
         using pi times radius squared."""
 
-        self.area = math.pi * self.radius**2
-        print(f"Area: {self.area}")
+        self.area_computed = math.pi * self.radius**2
+        return (self.area_computed)
 
     def perimeter(self):
         """Calculate and print the
         circle's circumference (perimeter)."""
 
-        self.perimeter = 2 * math.pi * self.radius
-        print(f"Perimeter: {self.perimeter}")
+        self.perimeter_computed = 2 * math.pi * self.radius
+        return (self.perimeter_computed)
 
 
 class Rectangle(Shape):
@@ -65,8 +67,8 @@ class Rectangle(Shape):
     internal storage and property setters for validation."""
 
     def __init__(self, width=0, height=0):
-        self.__width = width
-        self.__height = height
+        self.width = width
+        self.height = height
 
     @property
     def width(self):
@@ -96,15 +98,15 @@ class Rectangle(Shape):
         """Calculate and print the rectangle's area
         as width times height."""
 
-        self.area = self.width * self.height
-        print(f"Area: {self.area}")
+        self.area_computed = self.width * self.height
+        return (self.area_computed)
 
     def perimeter(self):
         """Calculate and print the rectangle's perimeter
         as sum of all sides."""
 
-        self.perimeter = 2 * (self.width + self.height)
-        print(f"Perimeter : {self.perimeter}")
+        self.perimeter_computed = 2 * (self.width + self.height)
+        return (self.perimeter_computed)
 
 
 def shape_info(obj):
