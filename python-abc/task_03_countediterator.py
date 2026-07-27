@@ -29,6 +29,9 @@ class CountedIterator():
 
         return self.count
 
+    def __iter__(self):
+        return self
+
     def __next__(self):
         """Advance iterator and increment counter before returning next item.
 
@@ -36,7 +39,7 @@ class CountedIterator():
         from wrapped iterator, then returns the value to caller
         without modifying count logic further."""
 
+        value = next(self.iterator)
         self.count += 1
         self.get_count()
-        value = next(self.iterator)
         return (value)
