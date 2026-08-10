@@ -1,15 +1,13 @@
 #!/usr/bin/python3
 
-
-import json
-
-
 """Module providing a utility to convert Python objects into JSON strings.
 
 This module defines the to_json_string function which uses
 the standard library's json.dumps() method to serialize any valid Python object
 (dict, list, str, int, float, bool, None) into its corresponding
 JSON string representation."""
+
+import json
 
 
 def to_json_string(my_obj):
