@@ -19,4 +19,4 @@ def read_file(filename=""):
     variable beyond the context manager scope."""
 
     with open(filename, encoding="utf-8") as f:
-        print(f"{f.read()}")
+        print(f"{f.read()}", end="")
