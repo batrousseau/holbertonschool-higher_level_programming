@@ -22,8 +22,11 @@ if my_file.is_file():
 
     item: list = []
     item.append(load_from_json_file("add_item.json"))
-    item.append(sys.argv[1:])
-    save_to_json_file(item, "add_item.json")
+    try:
+        item.append(sys.argv[1])
+        save_to_json_file(item, "add_item.json")
+    except IndexError:
+        pass
 
 
 else:
@@ -33,6 +36,8 @@ else:
     When file does not exist yet it creates a simple list
     containing only first positional argument passed to
     script execution directly here."""
-
-    item = sys.argv[1:]
-    save_to_json_file(item, "add_item.json")
+    try:
+        item = sys.argv[1]
+        save_to_json_file(item, "add_item.json")
+    except IndexError:
+        pass
