@@ -34,5 +34,5 @@ else:
     containing only first positional argument passed to
     script execution directly here."""
 
-    item = sys.argv[1]
+    item = sys.argv[1:]
     save_to_json_file(item, "add_item.json")
