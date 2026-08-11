@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 """Module providing a utility to manage JSON item lists.
 
 This script checks if 'add_item.json' exists, loads existing data
@@ -23,7 +22,7 @@ if my_file.is_file():
 
     item: list = []
     item.append(load_from_json_file("add_item.json"))
-    item.append(sys.argv[1])
+    item.append(sys.argv[1:])
     save_to_json_file(item, "add_item.json")
 
 
