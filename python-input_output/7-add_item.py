@@ -12,32 +12,13 @@ save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
 
 my_file = Path("add_item.json")
 
-
 if my_file.is_file():
-    """Load existing items into a new list variable.
 
-    Reads current JSON file contents into an item list
-    for further processing steps below in this conditional
-    block execution flow path only."""
-
-    item: list = []
-    item.append(load_from_json_file("add_item.json"))
-    try:
-        item.append(sys.argv[1])
-        save_to_json_file(item, "add_item.json")
-    except IndexError:
-        pass
-
+    item = load_from_json_file("add_item.json")
+    item.extend(sys.argv[1:])
+    save_to_json_file(item, "add_item.json")
 
 else:
-    """Initialize new single-item list from
-    command line argument.
 
-    When file does not exist yet it creates a simple list
-    containing only first positional argument passed to
-    script execution directly here."""
-    try:
-        item = sys.argv[1]
-        save_to_json_file(item, "add_item.json")
-    except IndexError:
-        pass
+    item = sys.argv[1:]
+    save_to_json_file(item, "add_item.json")
