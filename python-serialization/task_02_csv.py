@@ -8,7 +8,7 @@ def convert_csv_to_json(csv_file):
         with open(csv_file, mode="r",newline='',encoding="utf-8") as file:
             data = list(csv.DictReader(file))
     except FileNotFoundError:
-        print(f"Erreur : Le fichier '{file}' est introuvable.")
+        print(f"Erreur : Le fichier '{csv_file}' est introuvable.")
         return False
     except (PermissionError, OSError) as e:
         print(f"Erreur d'accès au fichier : {e}")
