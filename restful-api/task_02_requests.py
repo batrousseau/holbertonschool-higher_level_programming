@@ -42,13 +42,22 @@ def fetch_and_save_posts():
 
     r = requests.get("https://jsonplaceholder.typicode.com/posts/")
     json_list = r.json()
+    variable = "userId"
+    new_list: list = []
+    
 
+    for element in json_list:
+        new_dict: dict = {}
+        for key in element.keys():
+            if key != variable:
+                new_dict[key] = element.get(key)
+        new_list.append(new_dict)
 
     try:
         with open("posts.csv", mode="w", encoding="utf-8") as file:
-            csv_dict = csv.DictWriter(file, fieldnames=["userId","id", "title", "body"])
+            csv_dict = csv.DictWriter(file, fieldnames=["id", "title", "body"])
             csv_dict.writeheader()
-            csv_dict.writerows(json_list)
+            csv_dict.writerows(new_list)
     except FileNotFoundError:
         print(f"Erreur : Le fichier '{r}' est introuvable.")
         return False
