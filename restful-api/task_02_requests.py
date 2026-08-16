@@ -22,7 +22,7 @@ def fetch_and_print_posts():
     via json parsing logic flow execution path here only."""
 
     r = requests.get("https://jsonplaceholder.typicode.com/posts/")
-    print(f"Status code: {r.status_code}")
+    print(f"Status Code: {r.status_code}")
     json_list = r.json()
     variable: str = "title"
     for element in json_list:
