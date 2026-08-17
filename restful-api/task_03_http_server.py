@@ -27,7 +27,7 @@ class handler(http.server.BaseHTTPRequestHandler):
             self.send_response(200, "Main page")
             self.send_header("Content-Type","text")
             self.end_headers()
-            self.wfile.write(b"Hello ! This is a simple API !")
+            self.wfile.write(b"Hello, this is a simple API!")
             return
 
         # Handles data endpoint "/data" returning
