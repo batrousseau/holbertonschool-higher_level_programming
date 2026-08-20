@@ -17,7 +17,7 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-users: dict = {}
+#users: dict = {}
 @app.route("/")
 def home():
     return ("Welcome to the Flask API!", 200)
