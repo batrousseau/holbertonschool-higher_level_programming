@@ -69,7 +69,7 @@ def add_user():
     rebuild_user: dict = {new_username : new_user}
     print(rebuild_user)
     users.update(rebuild_user)
-    return(jsonify({new_user}), 200)
+    return(jsonify({"Message" : "User added"}, new_user), 201)
 
 
 if __name__ == "__main__": app.run()
