@@ -17,7 +17,7 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-#users: dict = {}
+users: dict = {}
 @app.route("/")
 def home():
     return ("Welcome to the Flask API!", 200)
@@ -69,7 +69,7 @@ def add_user():
     rebuild_user: dict = {new_username : new_user}
     print(rebuild_user)
     users.update(rebuild_user)
-    return(jsonify(f"User created, values {new_user}"), 200)
+    return(jsonify({new_user}), 200)
 
 
 if __name__ == "__main__": app.run()
