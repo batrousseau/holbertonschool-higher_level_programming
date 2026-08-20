@@ -65,11 +65,10 @@ def add_user():
     for keys in users.keys():
         if keys == new_username:
             return(jsonify({"error":"Username already exists"}), 409)
-    new_user.pop("username")
     rebuild_user: dict = {new_username : new_user}
     print(rebuild_user)
     users.update(rebuild_user)
-    return(jsonify({"Message" : "User added"}, new_user), 201)
+    return(jsonify({"message" : "User added", "user" : new_user}), 201)
 
 
 if __name__ == "__main__": app.run()
