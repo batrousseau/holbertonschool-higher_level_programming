@@ -84,7 +84,7 @@ def loggin():
     else:
         token = create_access_token(identity=username, additional_claims={"role": "user"})
 
-    return token, 200
+    return {"access token" : token}, 200
 
 
 @app.route("/jwt-protected")
