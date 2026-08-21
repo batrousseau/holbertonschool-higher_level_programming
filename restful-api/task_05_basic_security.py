@@ -74,7 +74,7 @@ def loggin():
     username = verify_password(request.json.get("username"), request.json.get("password"))
 
     if not username:
-        return (401)
+        return jsonify({"message" : "Unauthorized"}), 401
 
     role = users.get(username).get("role")
 
@@ -84,7 +84,7 @@ def loggin():
     else:
         token = create_access_token(identity=username, additional_claims={"role": "user"})
 
-    return {"access_token" : token}, 200
+    return jsonify({"access_token" : token}), 200
 
 
 @app.route("/jwt-protected")
