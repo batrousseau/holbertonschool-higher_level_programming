@@ -63,7 +63,7 @@ def basic_protected():
     return ("Basic Auth: Access Granted"), 200
 
 
-@app.post("/loggin")
+@app.post("/login")
 def loggin():
     """Handle user login and generate JWT tokens based on role.
 
