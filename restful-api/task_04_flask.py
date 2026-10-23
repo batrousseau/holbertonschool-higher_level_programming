@@ -17,13 +17,13 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
+# Endpoint: Home page with welcome message.
 users: dict = {}
 @app.route("/")
 def home():
     return ("Welcome to the Flask API!", 200)
 
 
-# Endpoint: Home page with welcome message.
 @app.route("/data")
 def data():
     user_list: list = []
