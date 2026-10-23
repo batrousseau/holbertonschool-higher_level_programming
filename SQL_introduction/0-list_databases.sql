@@ -1,3 +1,5 @@
+-- List all the database in the system
+
 SELECT TABLE_NAME
 FROM INFORMATION_SCHEMA.TABLES
 WHERE TABLE_TYPE = 'BASE TABLE'
